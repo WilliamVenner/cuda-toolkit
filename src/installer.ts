@@ -65,23 +65,5 @@ export async function install(
   } catch (error) {
     core.debug(`Error during installation: ${error}`)
     throw error
-  } finally {
-    // Always upload installation log regardless of error
-    if ((await getOs()) === OSType.linux) {
-      const artifactClient = artifact.create()
-      const artifactName = 'install-log'
-      const files = ['/var/log/cuda-installer.log']
-      const rootDirectory = '/var/log'
-      const artifactOptions = {
-        continueOnError: true
-      }
-      const uploadResult = await artifactClient.uploadArtifact(
-        artifactName,
-        files,
-        rootDirectory,
-        artifactOptions
-      )
-      core.debug(`Upload result: ${uploadResult}`)
-    }
   }
 }
