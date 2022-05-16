@@ -301,12 +301,12 @@ function install(executablePath, version, subPackagesArray, linuxLocalArgsArray)
                 // Root permission needed on linux
                 command = `sudo ${executablePath}`;
                 // Install silently, and add additional arguments
-                installArgs = ['--silent', '--verbose'].concat(linuxLocalArgsArray);
+                installArgs = ['--silent'].concat(linuxLocalArgsArray);
                 break;
             case platform_1.OSType.windows:
                 // Windows handles permissions automatically
                 command = executablePath;
-                installArgs = ['-s', '-v'];
+                installArgs = ['-s'];
                 // Add subpackages to command args (if any)
                 installArgs = installArgs.concat(subPackages.map(subPackage => {
                     // Display driver sub package name is not dependent on version
