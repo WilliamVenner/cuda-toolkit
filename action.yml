@@ -17,7 +17,7 @@ inputs:
   linux-local-args:
     description: '(Linux and ''local'' method only) override arguments for the linux .run installer. For example if you don''t want samples use ["--toolkit"] double quotes required!'
     required: false
-    default: '["--toolkit", "--samples"]'
+    default: '["--toolkit"]'
 runs:
   using: 'node12'
   main: dist/index.js
