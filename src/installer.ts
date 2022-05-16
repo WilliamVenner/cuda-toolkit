@@ -38,12 +38,12 @@ export async function install(
       // Root permission needed on linux
       command = `sudo ${executablePath}`
       // Install silently, and add additional arguments
-      installArgs = linuxLocalArgsArray;
+      installArgs = ['--silent', '--verbose'].concat(linuxLocalArgsArray);
       break
     case OSType.windows:
       // Windows handles permissions automatically
       command = executablePath
-      installArgs = []
+      installArgs = ['-s', '-v']
       // Add subpackages to command args (if any)
       installArgs = installArgs.concat(
         subPackages.map(subPackage => {
